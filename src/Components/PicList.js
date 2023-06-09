@@ -27,5 +27,5 @@ const PicList = props => {
     )
 };
 
-export default PicList
+export default PicList;
 
