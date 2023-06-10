@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
     BrowserRouter,
     Route,
-    Switch
+    Routes
   } from 'react-router-dom';
   import axios from 'axios';
 
@@ -64,6 +64,7 @@ function App() {
                 <nav className='main-nav'>
                     <Nav />
                 </nav>
+                
                 <div className="photo-container">
                 
                     {
@@ -72,21 +73,21 @@ function App() {
                         : <PicList data={pics}/>
                     }
                 
-                <Switch>
-                    <Route path="/" element={<Nav to={'/search'} />} />
-                    <Route path="search" element={<PicList data={pics} query={query} />} />
-                    <Route path="search/:searching" element={<PicList data={pics} query={query} />} />
-                    <Route path="bees" element={<PicList data={beeImages} query="cats"/>} />
-                    <Route path="space" element={<PicList data={spaceImages} query="dogs"/>} />
-                    <Route path="art" element={<PicList data={artImages} query="computers" />} />
-                </Switch>
+                    <Routes>
+                        <Route path="/" element={<Nav to={'/search'} />} />
+                        <Route path="search" element={<PicList data={pics} query={query} />} />
+                        <Route path="search/:searching" element={<PicList data={pics} query={query} />} />
+                        <Route path="bees" element={<PicList data={beeImages} query="cats"/>} />
+                        <Route path="space" element={<PicList data={spaceImages} query="dogs"/>} />
+                        <Route path="art" element={<PicList data={artImages} query="computers" />} />
+                    </Routes>
 
                 </div>
-            </div>
+        </div>
 
         </BrowserRouter>
         
-    )
+    );
 
 }
 
