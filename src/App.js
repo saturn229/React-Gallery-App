@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react';
 import {
     BrowserRouter,
     Route,
-    Routes
+    Routes,
+    Navigate
   } from 'react-router-dom';
   import axios from 'axios';
 
 
 //App Components
-import Nav from './Components/Nav';
-import SearchForm from './Components/SearchForm';
-import PicList from './Components/PicList';
+import Nav from './Components/Nav.js';
+import SearchForm from './Components/SearchForm.js';
+import PicList from './Components/PicList.js';
 import apiKey from "./config.js";
 
 
@@ -74,12 +75,12 @@ function App() {
                     }
                 
                     <Routes>
-                        <Route path="/" element={<Nav to={'/search'} />} />
+                        <Route path="/" element={<Navigate to= '/search' />} />
                         <Route path="search" element={<PicList data={pics} query={query} />} />
                         <Route path="search/:searching" element={<PicList data={pics} query={query} />} />
-                        <Route path="bees" element={<PicList data={beeImages} query="cats"/>} />
-                        <Route path="space" element={<PicList data={spaceImages} query="dogs"/>} />
-                        <Route path="art" element={<PicList data={artImages} query="computers" />} />
+                        <Route path="bees" element={<PicList data={beeImages} query="bees"/>} />
+                        <Route path="space" element={<PicList data={spaceImages} query="space"/>} />
+                        <Route path="art" element={<PicList data={artImages} query="art" />} />
                     </Routes>
 
                 </div>
