@@ -16,18 +16,18 @@ import apiKey from "./config.js";
 
 
 function App() {
-    const [beeImages, setBeeImages] = useState([])
-    const [spaceImages, setSpaceImages] = useState([])
-    const [artImages, setArtImages] = useState([])
+    const [beeImages, setBeeImages] = useState([]);
+    const [sunsetImages, setSunsetImages] = useState([]);
+    const [catImages, setCatImages] = useState([]);
     const [pics, setPics] = useState([]);
     const [query, setQuery] = useState("flowers");
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         handleQueryChange(query);
         handleQueryChange("bees");
-        handleQueryChange("space");
-        handleQueryChange("art");
+        handleQueryChange("sunset");
+        handleQueryChange("cats");
       }, [query]);
 
       const handleQueryChange = searchText => {
@@ -39,10 +39,10 @@ function App() {
             if (activeFetch) {
               if (searchText === "bees") {
                 setBeeImages(response.data.photos.photo)
-              } else if (searchText === "space") {
-                setSpaceImages(response.data.photos.photo);
-              } else if (searchText === "art") {
-                setArtImages(response.data.photos.photo);
+              } else if (searchText === "sunset") {
+                setSunsetImages(response.data.photos.photo);
+              } else if (searchText === "cats") {
+                setCatImages(response.data.photos.photo);
               } else {
                 setPics(response.data.photos.photo);
                 setLoading(false);
@@ -71,16 +71,15 @@ function App() {
                     {
                         (loading)
                         ? <p>loading...</p>
-                        : <PicList data={pics}/>
-                    }
+                        : null }
                 
                     <Routes>
                         <Route path="/" element={<Navigate to= '/search' />} />
                         <Route path="search" element={<PicList data={pics} query={query} />} />
                         <Route path="search/:searching" element={<PicList data={pics} query={query} />} />
                         <Route path="bees" element={<PicList data={beeImages} query="bees"/>} />
-                        <Route path="space" element={<PicList data={spaceImages} query="space"/>} />
-                        <Route path="art" element={<PicList data={artImages} query="art" />} />
+                        <Route path="sunset" element={<PicList data={sunsetImages} query="sunset"/>} />
+                        <Route path="cats" element={<PicList data={catImages} query="cats" />} />
                     </Routes>
 
                 </div>
